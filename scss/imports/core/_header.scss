@@ -1,0 +1,247 @@
+// css header
+.header {
+    height: var(--height-header);
+    background: rgb(9,9,9);
+    background: linear-gradient(0deg, rgba(9,9,9,0) 0%, rgba(9,9,9,1) 100%);
+    font-family: 'pb';
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    &.active {
+        background: #000;
+        height: 60px;
+        transition: 0.3s;
+    }
+    .container-fluid {
+        height: 100%;
+        @include mid(true, $justify: space-between); 
+    }
+    &__logo {
+        a {
+            img {
+                display: block;
+            }
+        }
+    }
+    &__nav { 
+        ul {
+            @include mid(true);
+            position: absolute;
+            left: 50%;
+            right: 50%;
+            top: 50%;
+            bottom: 50%;
+            // left: 50%;
+            // transform: translateX(-50%);
+
+        }
+        a {
+            color: $white-cl;       
+            padding: 0 35px;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            line-height: 2.3rem;
+            letter-spacing: 0.4px;
+            opacity: 0.5;
+            @include transition(0.4s);
+            &:hover {
+                opacity: 1;
+            }
+            &.active {
+                opacity: 1;
+                color: $yellow-cl;
+            }
+        }
+    }
+    &__right {
+        display: flex;
+        // justify-content: flex-end;
+        font-size: 1.6rem;
+        line-height: auto;
+        letter-spacing: 0.8px;
+        .lang{
+            position: relative;
+            &__current {
+                color: $white-cl;
+                cursor: pointer;
+            }
+            img {
+                left: 50%;
+                @include transform(translateY(-50%));
+            }
+            &__list {
+                position: absolute;
+                width: 75px;
+                height: auto;
+                background: $white-cl;
+                text-align: center;
+                padding: 20px;   
+                right: 0;
+                top: 41px;
+                opacity: 0;
+                // display: none; 
+                a {
+                    color: $black-cl;
+                    padding: 10px 0;
+                    &:hover {
+                        color: $yellow-cl;
+                    }
+                }
+            }
+            &.active {
+                .lang__list {
+                    opacity: 1;
+                }
+            }
+        }
+        .btnmenu {
+            display: none;
+            width: 40px;
+            height: 22px;
+            margin-left: 20px;
+            position: relative;
+            cursor: pointer;
+            z-index: 300;
+            span {
+                width: 100%;
+                height: 2px;
+                display: block;
+                background: $yellow-cl;
+                position: absolute;
+                top: 50%;
+                @include transform(translateY(-50%));
+                @include transition(0.3s);
+            }
+            &:before, &:after {
+                content: '';
+                width: 100%;
+                height: 2px;
+                display: block;
+                background: $yellow-cl;
+                @include transform(rotate(0deg) translateY(0px));
+                @include transition(transform 0.3s);
+            }
+            &:after {
+                position: absolute;
+                bottom: 0;
+            }
+            &.active {
+                &:before {
+                    transform: rotate(45deg) translate(9px, 4px);
+                    transition: 0.3s;
+                }
+                span {
+                    opacity: 0;
+                    transition: 0.3s;
+                }
+                &:after {
+                    transform: rotate(-45deg) translate(9px, -4px);
+                    transition: 0.3s;
+                }
+            }
+        }
+    }
+    .nav {
+        width: 100vw;
+        height: calc(100vh - var(--height-header));
+        z-index: 200;
+        background: #161616;
+        position: fixed;
+        top: calc(var(--height-header));
+        left: 0px;
+        @include mid(true);
+        
+        opacity: 0;
+        // visibility: hidden;
+        // pointer-events: none;
+        @include transform(translateX(100%));
+        transition: 0.9s cubic-bezier(.88,.03,.07,.79);
+        ul {
+            flex-direction: column;
+            @include mid(false);
+            li {
+                text-align: center;
+                margin: 40px auto;
+                a {
+                    color: $white-cl;
+                    text-transform: uppercase;
+                    text-align: center;
+                }
+            }
+        }
+        &.active {
+            opacity: 1;
+            // pointer-events: auto;
+            @include transform(translateX(0%));
+            transition: 0.9s cubic-bezier(.88,.03,.07,.79);
+        }
+
+    }
+
+
+
+
+    //tablet
+    @include sm {
+        background: #000;
+        .container-fluid {
+        }
+        &__logo {
+            a {
+                img {
+                    width: 150px;
+                }
+            }
+        }
+        &__nav {
+            display: none;
+        }
+        &__right {
+            .btnmenu {
+                display: block;
+            }
+        }
+    }
+
+    //mobile
+    @include xs {
+        background: #000;
+        height: var(--height-header);
+        .container-fluid {
+        }
+        &__logo {
+            a {
+                img {
+                    width: 150px;
+                }
+            }
+        }
+
+        &__right {
+            .lang {
+                &__current {
+                    // left: 50%;
+                    // @include transform(translateY(50%));
+                    // padding: 0 20px;
+                }
+                &__list {
+                    right: 0px;
+                    top: 40px;
+                }
+            }
+        }
+        
+        .btnmenu {
+            display: block;
+            width: 30px;
+            height: 20px;
+
+        }
+    }
+}
+
+
+
+

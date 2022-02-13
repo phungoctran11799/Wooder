@@ -1,0 +1,42 @@
+// css footer
+
+.footer {
+    background: #000000;
+    padding: 25px 0;
+    .container {
+        @include mid (true, $justify: space-between);
+       
+
+    }
+    .copy {
+        color: #b0b0b0;
+        font-size: 1.2rem;
+        line-height: 2rem;
+        letter-spacing: 0.8px;
+
+    }
+    .logo {
+        left: 50%;
+        transform: translateX(-30%);
+
+    }
+    a {
+        text-transform: uppercase;
+        color: #b0b0b0;
+        font-size: 1.2rem;
+        line-height: 2rem;
+        letter-spacing: 0.8px;
+        cursor: pointer;
+    }
+    @include xs {
+        .container {
+            flex-direction: column;
+        }
+        .logo {
+            margin: 20px auto;
+            left: 50%;
+            transform: translateX(3%);
+        }
+    }
+
+}
