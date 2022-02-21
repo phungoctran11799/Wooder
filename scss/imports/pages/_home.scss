@@ -13,10 +13,16 @@
             height: 100% !important;
         }
         .flickity-page-dots {
-            left: 0;
-            @include transform(translateX(-37%));
+            // left: 50%;
+            @include transform(translateX(-40%));
             bottom: 30px;
-            z-index: 1000;
+            // z-index: 1000;
+            @include sm {
+                @include transform(translateX(-26%));
+            }
+            @include xs {
+                @include transform(translateX(-38%));
+            }
         }
         .flickity-page-dots .dot{
             background: $yellow-cl;
@@ -194,6 +200,7 @@
         &__bottom {
             &-paging {
                 .number {
+                    display: none;
                     font-size: 3rem;
                     &:before {
                         width: 30px;
@@ -834,6 +841,9 @@
                         @include transition(0.3s);
                     }
                 }
+            }
+            @include xs {
+                grid-template-rows: 120px 120px;
             }      
         }
     }
@@ -902,17 +912,17 @@
         .container {
             padding: 50px 12px;
         }
-        &__thumb {
-            grid-template-rows: 100px 100px 100px;
-            grid-template-columns: repeat (2, 1fr);
-            gap: 10px;
-            &-item:nth-child(4) {
-                grid-area: 3/1/4/2;
-            }
-            &-item:last-child {
-                grid-area: 3/2/4/3;
-            }
-        }
+        // &__thumb {
+        //     grid-template-rows: 100px 100px 100px;
+        //     grid-template-columns: repeat (2, 1fr);
+        //     gap: 10px;
+        //     &-item:nth-child(4) {
+        //         grid-area: 3/1/4/2;
+        //     }
+        //     &-item:last-child {
+        //         grid-area: 3/2/4/3;
+        //     }
+        // }
         .content {
             max-width: 400px;
             // padding-left: 10px;
